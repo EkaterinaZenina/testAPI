@@ -15,8 +15,8 @@ public class AuthTest {
     @Test
     void shouldLoginIfUserRegisteredActive() {
         RegistrationInfo user = DataGenerator.Registration.getRegisteredUser("active");
-        $("[data-test-id='login'] .input").setValue(user.getLogin());
-        $("[data-test-id='password'] .input").setValue(user.getPassword());
+        $("[data-test-id='login'] input").setValue(user.getLogin());
+        $("[data-test-id='password'] input").setValue(user.getPassword());
         $("[data-test-id='action-login']").click();
         $("[id='root']").shouldBe(exactText("Личный кабинет"));
     }
@@ -24,16 +24,16 @@ public class AuthTest {
     @Test
     void shouldNotLoginUserIfNonRegisteredActive() {
         RegistrationInfo user = DataGenerator.Registration.getRandomUser("active");
-        $("[data-test-id='login'] .input").setValue(user.getLogin());
-        $("[data-test-id='password'] .input").setValue(user.getPassword());
+        $("[data-test-id='login'] input").setValue(user.getLogin());
+        $("[data-test-id='password'] input").setValue(user.getPassword());
         $("[data-test-id='action-login']").click();
         $("[data-test-id='error-notification']").shouldBe(exactText("Ошибка Ошибка! Неверно указан логин или пароль"));
     }
     @Test
     void shouldNotLoginUserIfRegisteredBlocked() {
         RegistrationInfo user = DataGenerator.Registration.getRegisteredUser("blocked");
-        $("[data-test-id='login'] .input").setValue(user.getLogin());
-        $("[data-test-id='password'] .input").setValue(user.getPassword());
+        $("[data-test-id='login'] input").setValue(user.getLogin());
+        $("[data-test-id='password'] input").setValue(user.getPassword());
         $("[data-test-id='action-login']").click();
         $("[data-test-id='error-notification']").shouldBe(exactText("Ошибка Ошибка! Пользователь заблокирован"));
     }
@@ -42,8 +42,8 @@ public class AuthTest {
     void shouldNotLoginIfUserRegisteredActiveWrongLogin() {
         RegistrationInfo user = DataGenerator.Registration.getRegisteredUser("active");
         String login = DataGenerator.getLogin();
-        $("[data-test-id='login'] .input").setValue(login);
-        $("[data-test-id='password'] .input").setValue(user.getPassword());
+        $("[data-test-id='login'] input").setValue(login);
+        $("[data-test-id='password'] input").setValue(user.getPassword());
         $("[data-test-id='action-login']").click();
         $("[data-test-id='error-notification']").shouldBe(exactText("Ошибка Ошибка! Неверно указан логин или пароль"));
     }
@@ -52,8 +52,8 @@ public class AuthTest {
     void shouldNotLoginIfUserRegisteredActiveWrongPassword() {
         RegistrationInfo user = DataGenerator.Registration.getRegisteredUser("active");
         String password = DataGenerator.getPassword();
-        $("[data-test-id='login'] .input").setValue(user.getLogin());
-        $("[data-test-id='password'] .input").setValue(password);
+        $("[data-test-id='login'] input").setValue(user.getLogin());
+        $("[data-test-id='password'] input").setValue(password);
         $("[data-test-id='action-login']").click();
         $("[data-test-id='error-notification']").shouldBe(exactText("Ошибка Ошибка! Неверно указан логин или пароль"));
     }
