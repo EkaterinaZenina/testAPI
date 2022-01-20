@@ -18,7 +18,7 @@ public class DataGenerator {
             .log(LogDetail.ALL)
             .build();
 
-    static void setUpAll(RegistrationInfo user) {
+    static void sendRequest(RegistrationInfo user) {
         given()
                 .spec(requestSpec)
                 .body(user)
@@ -51,7 +51,7 @@ public class DataGenerator {
 
         public static RegistrationInfo getRegisteredUser(String status) {
             RegistrationInfo registeredUser = getRandomUser(status);
-            setUpAll(registeredUser);
+            sendRequest(registeredUser);
             return registeredUser;
         }
     }
